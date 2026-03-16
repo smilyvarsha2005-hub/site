@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>World Population Counter</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+margin:0;
+background:#f7f7f7;
+text-align:center;
+color:#333;
+}
+
+/* HEADER */
+
+header{
+background:#3a7d2c;
+color:white;
+padding:15px;
+font-size:18px;
+}
+
+/* TITLE */
+
+.title{
+margin-top:40px;
+font-size:40px;
+font-weight:300;
+}
+
+/* MAIN COUNTER */
+
+.counter{
+font-size:85px;
+font-weight:bold;
+margin:25px 0;
+color:#222;
+}
+
+/* STATS GRID */
+
+.stats{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:40px;
+margin:40px 20px;
+}
+
+.box{
+background:white;
+padding:25px;
+width:230px;
+border-radius:6px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.box h3{
+color:#666;
+margin-bottom:10px;
+}
+
+.number{
+font-size:32px;
+font-weight:bold;
+color:#3a7d2c;
+}
+
+/* COUNTRY TABLE */
+
+table{
+margin:40px auto;
+border-collapse:collapse;
+width:80%;
+background:white;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:12px;
+}
+
+th{
+background:#3a7d2c;
+color:white;
+}
+
+tr:nth-child(even){
+background:#f2f2f2;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.counter{
+font-size:45px;
+}
+
+table{
+width:95%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+World Live Statistics
+</header>
+
+<div class="title">
+Current World Population
+</div>
+
+<div class="counter" id="population">8,100,000,000</div>
+
+<div class="stats">
+
+<div class="box">
+<h3>Births Today</h3>
+<div class="number" id="births">0</div>
+</div>
+
+<div class="box">
+<h3>Deaths Today</h3>
+<div class="number" id="deaths">0</div>
+</div>
+
+<div class="box">
+<h3>Population Growth Today</h3>
+<div class="number" id="growth">0</div>
+</div>
+
+<div class="box">
+<h3>Internet Users</h3>
+<div class="number" id="internet">5,300,000,000</div>
+</div>
+
+</div>
+
+<h2>Top Countries by Population</h2>
+
+<table>
+
+<tr>
+<th>Rank</th>
+<th>Country</th>
+<th>Population</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>India</td>
+<td>1,430,000,000</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>China</td>
+<td>1,420,000,000</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>United States</td>
+<td>340,000,000</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Indonesia</td>
+<td>277,000,000</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Pakistan</td>
+<td>240,000,000</td>
+</tr>
+
+</table>
+
+<script>
+
+let population = 8100000000
+let births = 0
+let deaths = 0
+let growth = 0
+let internet = 5300000000
+
+let startTime = Date.now()
+
+function updateCounters(){
+
+let seconds = (Date.now() - startTime) / 1000
+
+population += 2
+births += 4
+deaths += 2
+growth = births - deaths
+internet += 1
+
+document.getElementById("population").innerText =
+population.toLocaleString()
+
+document.getElementById("births").innerText =
+births.toLocaleString()
+
+document.getElementById("deaths").innerText =
+deaths.toLocaleString()
+
+document.getElementById("growth").innerText =
+growth.toLocaleString()
+
+document.getElementById("internet").innerText =
+internet.toLocaleString()
+
+}
+
+setInterval(updateCounters,1000)
+
+</script>
+
+</body>
+</html>
